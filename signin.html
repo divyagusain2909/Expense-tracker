@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Poppins, sans-serif;
+      background: linear-gradient(135deg, #6c63ff, #4e9af1);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      width: 350px;
+      padding: 30px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      box-shadow: 0px 0px 25px rgba(0,0,0,0.25);
+      color: white;
+      text-align: center;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 7px;
+      outline: none;
+    }
+
+    button {
+      width: 95%;
+      padding: 12px;
+      background: #fff;
+      color: #333;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #f1f1f1;
+      transform: scale(1.02);
+    }
+
+    a {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Welcome Back</h2>
+    <p>Sign in to continue</p>
+
+    <input id="email" type="email" placeholder="Enter Email" />
+    <input id="password" type="password" placeholder="Enter Password" />
+
+    <button onclick="loginUser()">Sign In</button>
+
+    <p style="margin-top:15px">
+      Don't have an account? <a href="signup.html">Create one</a>
+    </p>
+  </div>
+
+  <script>
+    function loginUser() {
+      let savedEmail = localStorage.getItem("userEmail");
+      let savedPass = localStorage.getItem("userPass");
+
+      let email = document.getElementById("email").value;
+      let pass = document.getElementById("password").value;
+
+      if (email === savedEmail && pass === savedPass) {
+        alert("Login Successful 🎉");
+        window.location.href = "dashboard.html"; // your expense tracker
+      } else {
+        alert("Incorrect Email or Password ❌");
+      }
+    }
+  </script>
+
+</body>
+</html>

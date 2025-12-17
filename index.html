@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+    <nav class="navbar flex container wrap">
+      <a href="#" class="logo">
+        B<span>udgetMate.</span>
+      </a>
+    <ul class="navlist flex">
+      <li>
+          <a href="#" class="link">home</a>
+        </li>
+        <li>
+          <a href="signin.html" class="link">Sign In</a>
+        </li>
+        <li>
+          <a href="signup.html" class="link">Sign Up</a>
+        </li>
+        <li>
+          <a href="#" class="link" id="openContact">CONTACT</a>
+        </li>
+        <li>
+          <a href="#" class="link">blogs</a>
+        </li>
+    </ul>
+    </nav>
+    </header>
+
+    <main>
+    <section class="hero">
+      <div class="hero-content flex container wrap ">
+        <div>
+          <p class="hero-quote">"A investment in knowedge pays the best interest."</p>
+        </div>
+      </div>
+      </section>
+<section class="after-hero">
+        <div class="left-container">
+    <div class=" transaction-container">
+      <h1>Track Your Expense Here</h1>
+      <h4>Your Balance</h4>
+      <h1 id="balance">$0.00</h1>
+      <div class="inc-exp-container">
+        <div>
+          <h4>Income</h4>
+          <p id="money-plus" class="money-plus">
+            +$0.00
+          </p>
+        </div>
+        <div>
+          <h4>Expense</h4>
+          <p id="money-minus" class="money-minus">
+            -$0.00
+          </p>
+        </div>
+      </div>
+
+      <h3>History</h3>
+      <ul id="list" class="list">
+        <!-- <li class="minus">
+          Cash <span>-$400</span
+          ><button class="delete-btn">x</button>
+        </li> -->
+      </ul>
+      <h3>Add New Transition</h3>
+      <form id="form">
+          <div class="form-control">
+              <label for="text">Text</label>
+              <input type="text" id="text" placeholder="Enter Text...."/>
+          </div>
+          <div class="form-control">
+              <label for="amount">Amount <br> (negative - expense ,positive - income )</label>
+              <input type="number" id="amount" placeholder="Enter amount..."> 
+          </div>
+          <div class="form-control">
+          <label for="category">Category</label>
+           <select id="category">
+           <option value="Food">Food</option>
+           <option value="Travel">Travel</option>
+           <option value="Rent">Rent</option>
+          <option value="Shopping">Shopping</option>
+           <option value="Other">Other</option>
+           </select>
+</div>
+          <button class="btn">Add transaction</button>
+      </form>
+    </div>
+    </div>
+    <!-- JavaYscript Project  -->
+       
+     <div class="right-container">
+     
+      <div class="chart">
+        <h1>Spending by Category</h1>
+        <canvas id="doughnut" width="300" height="300"></canvas>
+      </div>
+     </div>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+ </section>
+    
+      <section class="section">
+      <div class="container">
+        <h2>New Latest</h2>
+        <div class="line"></div>
+
+        <div class="blog-container flex wrap">
+          <div class="blog-box">
+            <img src="https://thumbs.dreamstime.com/b/understanding-income-vs-expenses-visual-guide-illustration-visually-explains-concept-helping-individuals-understand-323969652.jpg">
+            <div class="blog-content">
+              <h3 class="headling">
+                <a href="#">New Trend 2025</a>
+                </h3>
+              <p class="des">Managing your income and expense efficiently is thebkey to long term financial success.Start by tracking your monthly budget, cutting down unnecessary expenses and investing in small, consistent amounts.</p>
+              <a href="#" class="blog-link">Read More</a>
+            </div>
+        </div>
+
+        <div class="blog-box">
+          <img src="https://th.bing.com/th/id/R.142423a9e4178ee82b05cdd00cccd0e5?rik=CADp%2bs7itpbtJQ&riu=http%3a%2f%2fthestartupmag.com%2fwp-content%2fuploads%2f2017%2f11%2fexpenses1-960x639.jpg&ehk=rVcAw05Rh8LK5ghFWYCGMeXFyOr3nS9ydk9x9TLbLzg%3d&risl=&pid=ImgRaw&r=0">
+          <div class="blog-content">
+            <h3 class="headling">
+              <a href="#">New Trend 2025</a>
+            </h3>
+            <p class="des">Managing your income and expense efficiently is thebkey to long term financial success.Start by tracking your monthly budget, cutting down unnecessary expenses and investing in small, consistent amounts.</p>
+            <a href="#" class="blog-link">Read More</a>
+          </div>
+      </div>
+
+      <div class="blog-box">
+        <img src="https://www.slideteam.net/media/catalog/product/cache/1280x720/i/n/income_expenses_and_profit_financial_graphs_slide01.jpg">
+        <div class="blog-content">
+          <h3 class="headling">
+            <a href="#">New Trend 2025</a>
+          </h3>
+          <p class="des">Managing your income and expense efficiently is thebkey to long term financial success.Start by tracking your monthly budget, cutting down unnecessary expenses and investing in small, consistent amounts.</p>
+          <a href="#" class="blog-link">Read More</a>
+        </div>
+        </div>
+
+        </div>
+        </div>
+    </section>
+
+      <!--Footer Here -->
+  <footer class="section">
+    <div class="footer-container container flex wrap">
+      <ul class="footer-list">
+        <li>
+          <a href="#" class="footer-link">about us</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">blog</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">contact us</a>
+        </li>
+      </ul>
+     
+      <ul class="footer-list">
+        <li class="footer-logo">
+          <a href="#" class="logo">
+           B<span>udgetMate.</span>
+          </a>
+        </li>
+        <li>
+          <p class="detail">+91 123 456 78</p>
+        </li>
+        <li>
+          <p class="detail">abc@gmail.com</p>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-buttom">
+      <p>
+        Copyright &copy;2025
+        <a href="#" class="footer-link">BudgetMate</a>
+      </p>
+    </div>
+  </footer>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span id="closeContact" class="close">&times;</span>
+    <h2>Contact Us</h2>
+    <p>📞 +91 123 456 7890</p>
+    <p>📧 contact@budgetmate.com</p>
+    <p>🏢 123 abc road</p>
+  </div>
+</div>
+
+     <script src="script.js"></script>
+  </body>
+</html>

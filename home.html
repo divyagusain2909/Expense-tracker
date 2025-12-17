@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1f7aff">
+<meta charset="UTF-8">
+<title>Premium Dashboard - BudgetMate</title>
+ <div class="top-assistant">
+  <img src="Screenshot (112).png" id="assistantImg">
+  <div class="speech-bubble" id="assistantBubble">
+    👋 Welcome! I'll guide you through this dashboard.
+  </div>
+</div>
+
+<style>
+  body {
+   margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, #436481, #0a1a2a 40%),
+    radial-gradient(circle at bottom right, #0f3057, #07121f 45%);
+  color: #eaf3ff;
+  min-height: 100vh;
+  }
+
+  h1 {
+    text-align: center;
+  margin: 35px 0 20px;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #5fb3ff, #1f7aff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(31,122,255,0.3);
+  }
+
+  .container {
+     width: 92%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 25px;
+  background: rgba(19, 47, 76, 0.55);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.4),
+    inset 0 0 1px rgba(255,255,255,0.15);
+  }
+
+  /* Premium Buttons */
+  .feature-btn {
+     width: 100%;
+  background: linear-gradient(145deg, #123a5c, #0c2238);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 18px;
+  color: white;
+  transition: all 0.4s ease;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+  }
+
+  .feature-btn:hover {
+    transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(31,122,255,0.35);
+  background: linear-gradient(145deg, #174a75, #102c44);
+  }
+
+  .feature-content {
+   border-radius: 16px;
+  background: linear-gradient(160deg, #102c44, #0b1f33);
+  border-left: 5px solid #1f7aff;
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.05),
+              0 20px 50px rgba(0,0,0,0.5);
+  }
+  .feature-content.active {
+  max-height: 1200px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  padding: 15px;
+  box-shadow: 0 0 25px rgba(31,122,255,0.25);
+}
+
+  /* Charts */
+  .charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 30px;
+  }
+
+  .chart-box {
+     background: linear-gradient(160deg, #102c44, #0b1f33);
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow:
+    0 25px 50px rgba(0,0,0,0.4),
+    inset 0 0 1px rgba(255,255,255,0.15);
+  transition: transform 0.4s ease;
+  }
+
+  /* Transaction Container */
+  .transaction-container {
+  background: linear-gradient(160deg, #102c44, #0b1f33);
+  padding: 25px;
+  border-radius: 18px;
+  margin-top: 25px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+  }
+
+  .transaction-container h3 {
+    margin-top: 0;
+  }
+
+  .transaction-container input,
+  .transaction-container select,
+  .transaction-container button {
+    padding: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: none;
+  }
+
+  .transaction-container button {
+    background: #1f7aff;
+    color: white;
+    cursor: pointer;
+  }
+
+  .transaction-container ul {
+    margin-top: 15px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .transaction-container li {
+    padding: 8px 0;
+    border-bottom: 1px solid #1f4c72;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .balance {
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  .remove-btn {
+    background: #ff4c4c;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .tool-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.tool-content {
+  background: #133253;
+  padding: 25px;
+  width: 420px;
+  border-radius: 12px;
+  color: white;
+}
+
+.close-btn {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.tool-content input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.tool-btn {
+  background: #1f7aff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-top: 12px;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+
+.result-box {
+  background: #0d2237;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+input, select {
+  background: #0c2238;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #1f7aff;
+  box-shadow: 0 0 15px rgba(31,122,255,0.4);
+}
+
+#smartWarning .tool-window {
+  border: 1px solid rgba(255,255,255,0.15);
+  background: linear-gradient(160deg, #132f4c, #091a2b);
+}
+
+button {
+  transition: transform 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.top-assistant {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #1f7aff, #6ea8ff);
+  border-radius: 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+#assistantImg {
+  width: 120px;
+  animation: floaty 3s ease-in-out infinite;
+}
+
+.speech-bubble {
+  background: rgb(76, 13, 192);
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 40px;
+  max-width: 720px;
+  position: relative;
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 30px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent rgb(108, 86, 233) transparent transparent;
+}
+
+@keyframes floaty {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+</style>
+</head>
+<body>
+
+<h1>🔹 Premium Features of BUDGETMATE</h1>
+<div class="container">
+
+  <!-- PREMIUM FEATURES -->
+  <button class="feature-btn"onclick="smartBudgetTool()"> 📊Smart Budget Planner</button>
+  <div id="smartBudget" class="feature-content">
+  </div>
+
+  <button class="feature-btn" onclick="investmentTool()">💹 Investment Advice</button>
+  <div id="investAdvice" class="feature-content">
+  </div>
+
+  <button class="feature-btn" onclick="savingsRoadmapTool()">🛣 Savings Roadmap</button>
+  <div id="savingRoadmap" class="feature-content">
+  </div>
+
+  <button class="feature-btn" onclick="smartWarningTool()">🧠 Smart Investment Warning</button>
+  <div id="smartWarning" class="feature-content">
+  </div>
+
+  <button class="feature-btn" onclick="toggleFeature('heatmapFeature')">🔥 Expense Heatmap</button>
+  <div id="heatmapFeature" class="feature-content">
+  <canvas id="heatmapChart" width="300" height="250"></canvas>
+  </div>
+  
+  <button class="feature-btn" onclick="toggleFeature('trackexpense')">👀 Track your Expense here</button>
+  <div id="trackexpense" class="feature-content">
+   
+  <!-- CHARTS -->
+  <div class="charts">
+    <div class="chart-box">
+      <h3>Pie Chart (Spending)</h3>
+      <canvas id="pieChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Bar Chart (Category Expenses)</h3>
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
+
+  <!-- TRANSACTION CONTAINER -->
+  <div class="transaction-container">
+    <h3>💰 Income & Expenses</h3>
+    <h4>Your Balance</h4>
+      <h1 id="balance">$0.00</h1>
+      
+    <input type="text" id="itemName" placeholder="S.N">
+    <input type="number" id="itemAmount" placeholder="Amount">
+    <select id="itemCategory">
+      <option value="Food">Food</option>
+      <option value="Travel">Travel</option>
+      <option value="Shopping">Shopping</option>
+      <option value="Bills">Bills</option>
+      <option value="Other">Other</option>
+      <option value="Income">Income</option>
+    </select>
+    <button onclick="addTransaction()">Add transaction</button>
+
+    <ul id="transactionList"></ul>
+    
+
+</div>
+</div>
+<!-- TOOL POPUP -->
+<div id="toolModal" class="tool-modal">
+  <div class="tool-content">
+    <span class="close-btn" onclick="closeTool()">&times;</span>
+    <h2 id="toolTitle"></h2>
+    <div id="toolBody"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="home.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js")
+    .then(() => console.log("Service Worker Registered"));
+}
+</script>
+</body>
+</html>
